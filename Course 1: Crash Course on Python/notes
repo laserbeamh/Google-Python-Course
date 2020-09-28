@@ -1,0 +1,325 @@
+--Week 1--
+Syntax: Rules for how each instruction is written
+Semantics: Effect the instructions have
+
+Script and program are virtually the same. Scripts are just shorter and have a quicker dev cycle
+Automation: process of replacing a manual step with one that happens automatically (e.g. traffic lights)
+Automation is much more consistent
+Automation is not good for things that require flexibility or creativity, or that don't happen frequently
+
+Don't be afraid to seek help, resources
+
+More similarities between programming languages than differences.
+
+Function: piece of code that performs a unit of work
+Keywords: reserved words used to construct instructions
+
+strings goes in ""
+
+power in python is ** e.g. 2**10
+
+
+--Week 2--
+Data types (classes): 
+	string (str)
+	integer (int)
+	float (number with a fractional part, including anything.0)
+
+can't combine data types
+type function will tell you data type
+
+variables: names we give certain values in our programs (any data type)
+assignment: process of storing a value inside a variable
+expression: combination of numbers, symbols, or other variables that produce a result when evaluated
+variable = value
+
+variable naming restrictions:
+	don't use keywords or functions that python reserves for its own (e.g. print)
+	no spaces.
+	alphanumeric and _
+	must start with letter or _
+variable names are case sensitive
+implicit conversion: interpreter automatically converting one data type into another (e.g. int to float)
+explicit conversion: explicitly specify the target data type. e.g. print("The area of the triangle is: " + str(area))
+
+define a function with 
+	def name(parameters):
+		what you want to do (as many lines as you like)
+		be wary of whitespace
+
+Return Values: tell python you want to store a value. e.g.
+	def area_triangle(base, height):
+		return (base*height)/2
+
+// = floor division - divides number and takes integer part of the division as the result.
+
+can use return for multiple values
+
+None: used to indicate that things are empty or they returned nothing
+
+function can cut down on duplicated code
+
+Style can make a huge difference for dev cycle
+	use good style!
+
+make code self-documenting: written in a way that's readable/doesn't hide its intent
+	give variable good names
+refactoring: rewriting code to be more self-documenting
+python comments = # 
+comments let you leave notes
+*****python style guide????*****
+
+if you compare, you get a boolean 
+to compare equality: ==
+not equals !=
+if you compare str and int, it'll come back false
+and, or, not are logical operators
+and needs both to be true
+or needs only one to be true
+not inverts value of the expression it's in front of
+Branching: ability of a program to alter its execution sequence
+
+if condition: (only runs if if condition evaluates to true)
+	statement
+else is useful, but not always needed (both are correct)
+modulo returns the remainder of the integer division of two numbers (quotient and remainder)
+elif (else if) adds another if statement
+	checks if, then elifs in order, then else
+	
+--Week 3--
+initializing - to give an initial value to a variable
+--while loops
+
+while [condition]:
+	statements
+
+x += 1 is shorthand for x = x+1
+
+must init variables
+may need to reinitialize variables as they may be holding old values
+
+Infinite loops never end!
+If you intentionally set an infinite loop, there needs to be a way to break it externally (user interaction, another program, timeout, etc.) - python uses "break"
+
+--for loops: iterates over a sequence of values e.g.
+for x in range(5):
+	print(x)
+
+range() starts at 0 by default and is not inclusive on the max value
+can set min and max values in range() by specifying two parameters
+can add a step with a third parameter
+
+because string are iterable, it'll go over every character. if want the whole word, need to make it into a list
+
+nested for loops:
+don't just blindly use them as they can take a long time, but they can be super helpful
+
+end in print function - if we want something other than a newline
+
+recursion: repeated application of the same procedure to a smaller problem. lets us tackle complex problems by reducing the problem to a simpler one
+
+in programming, recursion is a way to do a repetitive task by having a function call itself
+
+base case - smallest bit of code that can actually be done
+
+recursive example:
+def factorial(n):
+	if n < 2:
+		return 1
+	return n * factorial(n-1)
+	
+python's default is 1000 recursive calls of a function
+
+string indexing for specific characters
+slice = substring = portion of a string - like range (first number up to last, but not including)
+
+string in python are immutable
+method - function  associated with a specific class
+index method returns only first match
+
+string methods:
+.upper()
+.lower()
+.swapcase()
+.strip() - removes surrounding whitespace
+.lstrip() - left strip
+.rstrip() - right strip
+.count()
+.endswith()
+.isnumeric() - contains just numbers
+delimiter.join(string)
+string.split()
+string.format(variables) use {} in the string as a placeholder. one set of {} per variable. can put text in the {} (e.g. the name of the variable, but then need to add name in format method)
+use format to return just two decimals with {:.2f}
+called a formatting expression and always starts with a colon. can also be used to right (and presumably left) align text :>3 is right align 3 spaces
+{:>3.2f} would right align text 3 spaces and specify it as a float number with two decimals
+https://docs.python.org/3/library/stdtypes.html#string-methods
+
+lists are mutable and any type
+.append()
+.insert()
+.remove()
+.pop()
+
+tuple - elements of any type that are immutable
+tuples use () instead of []
+position inside tuple means something
+returned value in function is a tuple
+can unpack tuples - turn tuple into individual variables
+to do so, put variables = tuple/value name
+
+enumerate:
+for x, y in enumerate(z):
+	print("".format())
+using elements or enumerate to go through lists
+
+list comprehension let us create new lists based on sequences or ranges
+e.g. 
+multiples = [ x*7 for x in range(1,11)]
+lengths = [len(language) for language in languages]
+z = [ x for x in range(0,101) if x % 3 == 0 ]
+
+Dictionaries take pairs of keys and values. basically anything can be a key
+create with {}
+e.g. x = {}
+file_counts = {"jpg":10, "txt":14, key:value}
+file_counts["txt"]
+dictionaries are mutable
+to add: file_counts["cfg"] = 8
+keys are unique within the dictionary
+del dictionary[keyword] to delete
+
+for x in dictionary will return keys
+items method:
+for ext, amount in file_counts.items():
+	print("whatever")
+
+file_counts.items() - gets key/value pair
+file_counts.keys()
+file_counts.values()
+
+Use dictionaries when planning on searching for a specific element
+
+set - when you want to store a bunch of elements and be certain they're only present once. elements in the set must be immutable (like keys in a dictionary with no assc values)
+
+*****need to learn return vs print()*****
+
+object-oriented programming - way of thinking about and implementing our code - classes represent and define concepts, while objects are instances of classes
+if apple = class/type
+attributes - characterists associated to a type (color, flavor)
+methods - functions associated to a type (eat, cut)
+strings are instances of str class - methods are the same, but contents are different
+
+dir() prints all the attributes and methods to screen
+special methods start and end with __ - usually called by internal python functions NOT __name__
+
+can use help() which gives more info
+	optional parameters written between square brackets []
+	
+to define a class:
+class <Name>: (name starts with capital)
+	pass (pass is a placeholder to show it's empty)
+	
+class Apple:
+	color = ""
+	flavor = ""
+
+jonagold = Apple()
+jonagold.color = "red"
+jonagold.flavor = "sweet"
+
+dot notation
+
+could use methods for other classes as well: e.g.
+print(jonagold.color.upper()) would print RED
+
+methods are functions that operate on the attributes of a specific instance of a class
+
+to define a method:
+class Piglet:
+	def speak(self):
+		print("oink oink")
+
+class Piglet:
+	name = "piglet"
+	def speak(self):
+		print("Oink! I'm {}! Oink!".format(self.name))
+	
+instance variables - variables that have different values for different instances of the same class
+
+class Piglet:
+	years = 0
+	def pig_years(self):
+		return self.years * 18	
+		
+constructor - the constructor of the class is the method that's called when you call the name of the class, named __init__
+
+class Apple:
+	def __init__(self, color, flavor):
+		self.color = color
+		self.flavor = flavor
+
+docstring - brief text that explains what something does - they help make help() better
+	"""
+	swdfxgchk,j;oi
+	"""
+
+def __string__(self):
+	return ";kljlksadjf;sakdjfksa;ljfkds"
+
+Classes can inherit attributes
+
+class Fruit: <-- Parent
+	def __init__(self, color, flavor):
+		self.color = color
+		self.flavor = flavor
+
+class Apple(Fruit): <-- child
+	pass
+
+class Grape(Fruit):
+	pass
+	
+--------------------------------------------
+class Animal:
+	sound = ""
+	def __init__(self, name):
+		self.name = name
+	def speak(self):
+		print("{sound} I'm {name}! {sound}".format(name = self.name, sound = self.sound))
+		
+class Piglet(Animal):
+	sound = "Oink!"
+
+hamlet = Piglet("Hamlet")
+
+class Cow(Animal):
+	sound = "Moo"
+
+milky = Cow("Milky White")
+
+"is a" rule
+
+always initialize mutable attributes in the constructor - add dictionary to constructor - each instance needs its own list because dictionaries are mutable. at the class level, it would get spread across instances.
+
+composition - using objects as a list
+
+class Repository:
+  def __init__(self):
+    self.packages = {}
+  def add_packages(self, package):
+    self.packages[package.name] = package
+  def total_size(self):
+    result = 0
+    for package in self.packages.values():
+      result += package.size
+    return result
+    
+modules - used to organize functions, classes, and other data together in  structured way
+
+import datetime
+now = datetime.datetime.now()
+print(now)
+https://pypi.org/
+
+
