@@ -323,3 +323,24 @@ print(now)
 https://pypi.org/
 
 
+---Writing a script from the ground up---
+start with a problem statement
+        what is the input
+        what is the output
+don't reinvent the wheel - do some research
+plan
+write the script
+validate
+
+event class - contains the date when the event happened, (date)
+        the name of the machine, (machine)
+        the user, (user)
+        and the event type (type)
+
+focus on getting it to work before making it look nice
+
+list.sort() vs sorted(list)
+
+have different functions based on what you're doing
+
+
