@@ -1,0 +1,40 @@
+Creating python modules:
+it seems to literally just be a separate python file
+e.g.:
+cat areas.py
+import math
+
+def triangle(base, height):
+	return base*height/2
+
+def rectangle(base, height):
+	return base*height
+	
+def circle(radius):
+	return math.pi*(radius**2)
+
+cat other_file
+import areas
+
+if the module is large, create a directory with the name of the module with separate .py submodules
+	will need an __init__.py module
+	
+pitfalls of automation
+	have to write the script
+
+typically want to script out complex tasks so errors aren't made
+
+Pareto Principle: 20% of the sysadmin tasks you perform are responsible for 80% of your work
+
+bit-rot = process of software falling out of step with the env
+
+don't have false confidence in automation
+build in notification for automation errors
+build in errors for the log
+
+test automation periodically
+
+check the health of the computer
+shutil module (disk usage)
+psutil module (CPU usage)
+
