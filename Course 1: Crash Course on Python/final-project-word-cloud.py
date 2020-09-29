@@ -2,20 +2,6 @@
 This script will take an input file, clean the text of punctuation,
 remove any common words and, finally, produce a word cloud image.
 """
-#Install dependencies
-!pip install wordcloud
-!pip install fileupload
-!pip install ipywidgets
-
-using_jupyter = input("Are you using a Jupyter Notebook? (yes/no)")
-if using_jupyter == yes:
-	!jupyter nbextension install --py --user fileupload
-	!jupyter nbextension enable --py fileupload
-elif using_jupyter == no:
-	break
-else:
-	print("Not a valid choice. Not installing Jupyter depends")
-
 #Import various other modules
 import wordcloud
 import numpy as np
@@ -27,9 +13,11 @@ import sys
 
 #Prompt for a file
 filepath = input("Enter the path to the file: ")
-file = file.open(filepath)
+file = open(filepath)
+file_contents = file.read()
 
 #Open/read file contents
+#print(file_contents)
 
 #######################################################
 #####Code to actually open/read file contents here#####
@@ -44,10 +32,26 @@ def calculate_frequencies(file_contents):
     "have", "has", "had", "do", "does", "did", "but", "at", "by", "with", "from", "here", "when", "where", "how", \
     "all", "any", "both", "each", "few", "more", "some", "such", "no", "nor", "too", "very", "can", "will", "just"]
 
-    # LEARNER CODE START HERE
+    #Init empty dictionary
     frequency = {}
 
-    #wordcloud
+    #Add new dictionary entry if none exists, otherwise, word counter +1
+    file_cleaned = file_contents.lower().replace(punctuations,"")
+    frequency = {}
+    for word in file_cleaned.split():
+        if word not in uninteresting_words:
+            if word not in frequency:
+                frequency[word] = 1
+            else:
+                frequency[word] += 1
+
+    #Generate wordcloud
     cloud = wordcloud.WordCloud()
-    cloud.generate_from_frequencies()
+    cloud.generate_from_frequencies(frequencies)
     return cloud.to_array()
+
+    #Display wordcloud
+    myimage = calculate_frequencies(file_contents)
+    plt.imshow(myimage, interpolation = 'nearest')
+    plt.axis('off')
+    plt.show()
